@@ -3,52 +3,49 @@
 
 <head>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
+    <!--NEED TO ADD LINK TO REVIEW.CSS-->
 </head>
 
 <body>
-
-
-<form action="/action_page.php">
- 
-
-
-
-<!--COMPANY NAME--> 
- 
-
-<!--OVERALL RATING : STARS-->
-<form id="ratingsForm">
-  <div class="stars">
-    <input type="radio" name="star" class="star-1" id="star-1">
-    <label class="star-1" for="star-1">1</label>
-    <input type="radio" name="star" class="star-2" id="star-2">
-    <label class="star-2" for="star-2">2</label>
-    <input type="radio" name="star" class="star-3" id="star-3">
-    <label class="star-3" for="star-3">3</label>
-    <input type="radio" name="star" class="star-4" id="star-4">
-    <label class="star-4" for="star-4">4</label>
-    <input type="radio" name="star" class="star-5" id="star-5">
-    <label class="star-5" for="star-5">5</label>
-    <span></span>
-  </div>
-</form>
-
-
-<!--CURRENT OR FORMER EMPLOYEE-->
-<!--REVIEW TITLE-->
-<!--PROS-->
-<!--CONS-->
-<!--SUGGESTIONS TO MANAGEMENTS--> 
-
-
-<!--Submit-->
-
-  <input type="submit" value="Submit">
-
-</form>
-
+    <!--FORM STARTS-->
+    <form action="/action_page.php">
+        <!--COMPANY NAME how is this going to be generated?-->
+        COMPANY NAME
+        <!--OVERALL RATING : STARS-->
+        <form id="ratingsForm">
+            <div class="stars">
+                <input type="radio" name="star" class="star-1" id="star-1">
+                <label class="star-1" for="star-1">1</label>
+                <input type="radio" name="star" class="star-2" id="star-2">
+                <label class="star-2" for="star-2">2</label>
+                <input type="radio" name="star" class="star-3" id="star-3">
+                <label class="star-3" for="star-3">3</label>
+                <input type="radio" name="star" class="star-4" id="star-4">
+                <label class="star-4" for="star-4">4</label>
+                <input type="radio" name="star" class="star-5" id="star-5">
+                <label class="star-5" for="star-5">5</label>
+                <span></span>
+            </div>
+        </form>
+        <!--CURRENT OR FORMER EMPLOYEE-->
+        <br>Current or former employee?<br>
+        <!--REVIEW TITLE-->
+        <br>Review title:<br>
+  <input type="text" name="reviewTitle">
+        <!--PROS-->
+        <br>Pros:<br>
+  <input type="text" name="Pros">
+        <!--CONS-->
+        <br>Cons:<br>
+  <input type="text" name="Cons">
+        <!--SUGGESTIONS TO MANAGEMENT-->
+        <br>Suggestion to management:<br>
+  <input type="text" name="Suggestions">
+        <!--Submit-->
+        <br>
+        <input type="submit" value="Submit">
+        <br>
+    </form>
 </body>
+
 </html>
-
-
