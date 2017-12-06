@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Front of House</title>
+    <title>Front of House</title>
+    <link rel="stylesheet" href="./assets/minimal-form.css" />
 </head>
+
 <body>
-<!-- Upper left Bar of links (Write a review, Company) --> 
+    <!-- Upper left Bar of links (Write a review, Company) -->
 
-<!-- Upper right Login link --> 
+    <!-- Upper right Login link -->
 
-<!-- Recent Reviews --> 
+    <!-- Recent Reviews -->
 
-<!-- Top Places (on the left) Worst Places (on the right) --> 
+    <!-- Top Places (on the left) Worst Places (on the right) -->
 
-<!-- User input field -->
-<div class="form-group">
- <label for="search">Search Keyword:</label>
- <input type="text" class="form-control" id="user-input">
-</div>
+    <!-- User input field -->
+    <div class="form-group">
+        <form id="form" class="topBefore">
+            <header>SEARCH BUSINESS:</header>
+            <input class="input-bar" id="user-input" type="text" placeholder="NAME">
 
-<!-- Search button -->
-<button type="submit" class="btn btn-default" id="run-search"><i class="fa fa-search"></i> Search</button>
+            <!-- Search button -->
+            <input class="input-search" id="run-search" type="submit" value="SEARCH">
+        </form>
+    </div>
 
+    <!-- Links and credit -->
 
-<!-- Links and credit --> 
-
- <!-- jQuery JS -->
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <!-- Code to the JavaScript File -->
-  <script src="homepage.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Code to the JavaScript File -->
+    <script src="homepage.js"></script>
 
 </body>
-</html>
 
+</html>
