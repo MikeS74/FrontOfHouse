@@ -6,6 +6,8 @@ event.preventDefault();
 
 // Create a variable for the user input
 var search = $("#user-input").val().trim();
+    
+    $("#search-bar-div").hide();
 
 // Construct a URL to search user input in API
 
@@ -24,6 +26,22 @@ $.ajax({
           var results = response.restaurants;
 
           console.log(results);
- });
-         });
+    
+for (var i = 0; i < results.length; i++) {
+
+                var listDiv = $("<div class='list-gen'>");
+                var restResults = response.restaurants[i];
+                var restName = restResults.restaurant.name;
+                var restLoc = restResults.restaurant.location.address;
+                var restRating = restResults.restaurant.user_rating.aggregate_rating;
+                var dispAll = $("<p class='rest-list-item'>").html(restName + "<br>" + restLoc + "<br>" + "Rating: " + restRating + "<br>");
+                listDiv.append(dispAll);
+    console.log(restLoc);
+ 
+    $("#list-view").append(listDiv);
+};  
+    
+    
+});
+});
 });
