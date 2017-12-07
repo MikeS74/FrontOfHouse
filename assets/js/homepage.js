@@ -1,3 +1,5 @@
+var globalRestID = "";
+
 $(document).ready(function () {
 
     // Event listener for search button
@@ -39,14 +41,16 @@ $(document).ready(function () {
                         "data-zomato-id": restID
                     });
                     listDiv.append(dispAll);
-                    console.log(restLoc + " " + restID);
+//                    console.log(restLoc + " " + restID);
 
                     $("#list-view").append(listDiv);
                 };
                 $(".rest-list-item").on("click", function (event) {
                     var uniqueRestID = $(this).attr("data-zomato-id");
-                    console.log("Grab Zomato ID On Click Test " + uniqueRestID)
+                    globalRestID = uniqueRestID;
+                    console.log("Grab Zomato ID On Click Test " + globalRestID);
                 });
             });
     });
 });
+

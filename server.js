@@ -2,7 +2,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
-
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -10,14 +9,34 @@ var connection = mysql.createConnection({
     user: "root",
 
     // Your password
-    password: "",
-    database: "frontOfHouse"
+    password: "FreshChoice1",
+    database: "frontOfHouse",
+    multipleStatements: true
 
 });
-    console.log("connected");
 
-// connection.connect(function(err) {
-//   if (err) throw err;
-//   console.log("connected as id " + connection.threadId + "\n");
-//   createProduct();
-// });
+ connection.connect(function(err) {
+   if (err) throw err;
+   console.log("connected as id " + connection.threadId + "\n");
+   createProduct();
+     
+     
+function createProduct() {
+  console.log("Inserting a new product...\n");
+  var query = connection.query(
+    "INSERT INTO reviews SET ?",
+    {
+      api_id: 300,
+      user_id: 6,
+      user_name: "Dave",
+        review: "This place is wack"
+    
+    },
+    function(err, res) {
+      console.log(res.affectedRows + " product inserted!\n");
+    }
+  );
+
+  console.log(query.sql);
+}
+ });
