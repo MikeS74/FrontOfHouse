@@ -1,42 +1,66 @@
-// requires mysql and inquirer node packages
+//Node and express requirements
+var express = require("express");
 var mysql = require("mysql");
-var inquirer = require("inquirer");
+var bodyParser = require("body-parser");
+var path = require("path");
+var app = express();
+var PORT = process.env.PORT || 3001;
 
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    // Your username
-    user: "root",
+//Parse incoming request bodies in middleware
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(bodyParser.json());
 
-    // Your password
-    password: "FreshChoice1",
-    database: "frontOfHouse",
-    multipleStatements: true
+//Static file serving for images in public/img
+app.use('/static', express.static(path.join(__dirname, 'app/public')));
 
+//Routing access for api link
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
+
+//Server connection confirmation in node
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
 });
 
- connection.connect(function(err) {
-   if (err) throw err;
-   console.log("connected as id " + connection.threadId + "\n");
-   createProduct();
-     
-     
-function createProduct() {
-  console.log("Inserting a new product...\n");
-  var query = connection.query(
-    "INSERT INTO reviews SET ?",
-    {
-      api_id: 300,
-      user_id: 6,
-      user_name: "Dave",
-        review: "This place is wack"
-    
-    },
-    function(err, res) {
-      console.log(res.affectedRows + " product inserted!\n");
-    }
-  );
+///////////////////////////////////////////////////////////////////////////////////////////
 
-  console.log(query.sql);
-}
- });
+//var connection = mysql.createConnection({
+//    host: "localhost",
+//    port: 3306,
+//    // Your username
+//    user: "root",
+//
+//    // Your password
+//    password: "FreshChoice1",
+//    database: "frontOfHouse",
+//    multipleStatements: true
+//
+//});
+//
+// connection.connect(function(err) {
+//   if (err) throw err;
+//   console.log("connected as id " + connection.threadId + "\n");
+//   createProduct();
+//     
+//     
+//function createProduct() {
+//  console.log("Inserting a new product...\n");
+//  var query = connection.query(
+//    "INSERT INTO reviews SET ?",
+//    {
+//      api_id: 300,
+//      user_id: 6,
+//      user_name: "Dave",
+//        review: "This place is wack"
+//    
+//    },
+//    function(err, res) {
+//      console.log(res.affectedRows + " product inserted!\n");
+//    }
+//  );
+//
+//  console.log(query.sql);
+//}
+// });
