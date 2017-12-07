@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/tree1223/FrontOfHouse#readme",
   "dependencies": {
+    "express": "^4.16.2",
     "inquirer": "^4.0.1",
     "mysql": "^2.15.0"
   }
