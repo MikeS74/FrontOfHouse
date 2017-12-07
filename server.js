@@ -12,4 +12,12 @@ var connection = mysql.createConnection({
     // Your password
     password: "",
     database: "frontOfHouse"
+
 });
+    console.log("connected");
+
+// connection.connect(function(err) {
+//   if (err) throw err;
+//   console.log("connected as id " + connection.threadId + "\n");
+//   createProduct();
+// });

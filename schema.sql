@@ -9,5 +9,8 @@ CREATE TABLE reviews (
   user_id VARCHAR(45) NULL,
   user_name VARCHAR(45) NULL,
   review VARCHAR(300) NULL,
-  PRIMARY KEY (item_id)
+  PRIMARY KEY (api_id)
 );
+
+INSERT INTO reviews (api_id, user_id, user_name, review)
+VALUES (123, 1, "Mike", "This place sucks" );
