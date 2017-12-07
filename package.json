@@ -1,0 +1,24 @@
+{
+  "name": "frontofhouse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "review.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tree1223/FrontOfHouse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tree1223/FrontOfHouse/issues"
+  },
+  "homepage": "https://github.com/tree1223/FrontOfHouse#readme",
+  "dependencies": {
+    "inquirer": "^4.0.1",
+    "mysql": "^2.15.0"
+  }
+}
