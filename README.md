@@ -2,7 +2,7 @@
 
 Restaurant workers, listen up!  Ever wondered what you are getting into when you start a new job?  Well, the answer is here!  Front Of House is the app that can answer all of the unknown questions that usually take months of time working at an establishment to find out.  With Front Of House you can have insight into  restaurants' pros and cons, style of management and general review from both current and former employees.  Take a peek behind the curtain with the greatest thing to happen to restaurants since tipping! 
 
-##Live Link
+## Live Link
 
 //Fill in when available
 

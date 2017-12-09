@@ -1,30 +1,45 @@
-//Node and express requirements
 var express = require("express");
 var mysql = require("mysql");
 var bodyParser = require("body-parser");
 var path = require("path");
 var app = express();
-var PORT = process.env.PORT || 3001;
+// var PORT = process.env.PORT || 3001;
+var port = process.env.PORT || 8000;
 
-//Parse incoming request bodies in middleware
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
 
-//Static file serving for images in public/img
 app.use('/static', express.static(path.join(__dirname, 'app/public')));
+// app.use(express.static("public"));
 
-//Routing access for api link
 require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
-//Server connection confirmation in node
-app.listen(PORT, function() {
-    console.log("App listening on PORT: " + PORT);
-});
-
+// app.listen(PORT, function() {
+//     console.log("App listening on PORT: " + PORT);
+// });
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+// var express = require("express");
+// var bodyParser = require("body-parser");
+//var methodOverride = require("method-override");
+
+// var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// var exphbs = require("express-handlebars");
+
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
+
+var routes = require("./controllers/reviews_controller.js");
+
+app.use("/", routes);
+app.listen(port);
+
 
 // var connection = mysql.createConnection({
 //    host: "localhost",
