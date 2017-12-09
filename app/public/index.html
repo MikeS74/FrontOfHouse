@@ -68,7 +68,7 @@ var globalRestLoc = "";
                 // Storing an array of results in the results variable
                 var results = response.restaurants;
 
-                console.log(results);
+//                console.log(results);
 
                 for (var i = 0; i < results.length; i++) {
 
@@ -96,14 +96,23 @@ var globalRestLoc = "";
                     globalRestName = uniqueRestName;
                     globalRestLoc = uniqueRestLoc;
                     
-                    console.log("Grab Zomato ID On Click Test " + globalRestID);
+//                    console.log("Grab Zomato ID On Click Test " + globalRestID);
                     
                     var currentURL = window.location.origin;
                     $.post(currentURL + "/api/friends", {rest_id: globalRestID, business_name: globalRestName, business_loc: globalRestLoc}, function(data) {
-                    console.log(data);
+//                    console.log(data);
                         
                 });
+                 
+                      var currentURL = window.location.origin;
+
+      $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+      .done(function(clickedRestData) {
+          
+          console.log(clickedRestData);
+                    
             });
+                    });
     });
 });
 
