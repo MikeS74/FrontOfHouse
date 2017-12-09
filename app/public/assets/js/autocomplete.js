@@ -9,6 +9,7 @@ $(document).ready(function() {
       wildcard: '%QUERY',
       transform: function(data) {
       	console.log('data', data)
+      	
           return $.map(data.restaurants, function (restaurant) {
                 return {
                     value: restaurant.restaurant.name
