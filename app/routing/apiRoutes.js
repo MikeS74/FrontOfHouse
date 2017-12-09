@@ -14,6 +14,7 @@ module.exports = function(app) {
         var userInfo = req.body;
         
         friends.push(userInfo);
-
+        var tempRestInfo = userInfo;
+        console.log(tempRestInfo);
     });
 };
