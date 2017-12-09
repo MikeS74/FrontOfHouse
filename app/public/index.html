@@ -37,6 +37,9 @@
     <script type="text/javascript">
 
 var globalRestID = "";
+var globalRestName = "";
+var globalRestLoc = "";
+        
 
 //$(document).ready(function () {
 
@@ -75,8 +78,10 @@ var globalRestID = "";
                     var restLoc = restResults.restaurant.location.address;
                     var restRating = restResults.restaurant.user_rating.aggregate_rating;
                     var restID = restResults.restaurant.id;
-                    var dispAll = $("<p class='rest-list-item'>").html(restName + "<br>" + restLoc + "<br>" + "Rating: " + restRating + "<br>").attr({
-                        "data-zomato-id": restID
+                    var dispAll = $("<p class='rest-list-item'>").html(restName + "<br>" + restLoc + "<br>" + "Customer Rating: " + restRating + "<br>").attr({
+                        "data-zomato-id": restID,
+                        "data-zomato-name": restName,
+                        "data-zomato-loc": restLoc
                     });
                     listDiv.append(dispAll);
 //                    console.log(restLoc + " " + restID);
@@ -85,11 +90,16 @@ var globalRestID = "";
                 };
                 $(".rest-list-item").on("click", function (event) {
                     var uniqueRestID = $(this).attr("data-zomato-id");
+                    var uniqueRestName = $(this).attr("data-zomato-name");
+                    var uniqueRestLoc = $(this).attr("data-zomato-loc");
                     globalRestID = uniqueRestID;
+                    globalRestName = uniqueRestName;
+                    globalRestLoc = uniqueRestLoc;
+                    
                     console.log("Grab Zomato ID On Click Test " + globalRestID);
                     
                     var currentURL = window.location.origin;
-                    $.post(currentURL + "/api/friends", globalRestID, function(data) {
+                    $.post(currentURL + "/api/friends", {rest_id: globalRestID, business_name: globalRestName, business_loc: globalRestLoc}, function(data) {
                     console.log(data);
                         
                 });
