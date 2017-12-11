@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use('/static', express.static(path.join(__dirname, 'app/public')));
 // app.use(express.static("public"));
 
-require("./app/routing/apiRoutes")(app);
+//require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
 // app.listen(PORT, function() {
