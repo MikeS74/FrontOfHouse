@@ -20,5 +20,3 @@ CREATE TABLE reviews (
   PRIMARY KEY (api_id)
 );
 
-INSERT INTO reviews (api_id, user_id, user_name, review)
-VALUES (123, 1, "Mike", "This place sucks" );
