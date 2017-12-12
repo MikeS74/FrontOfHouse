@@ -67,7 +67,8 @@
              var dispAll = $("<p class='rest-list-item'>").html(restName + "<br>" + restLoc + "<br>" + "Customer Rating: " + restRating + "<br>").attr({
                  "data-zomato-id": restID,
                  "data-zomato-name": restName,
-                 "data-zomato-loc": restLoc
+                 "data-zomato-loc": restLoc,
+                 "data-zomato-custrate": restRating
              });
              listDiv.append(dispAll);
              $("#list-view").append(listDiv);
@@ -77,9 +78,10 @@
              var newReview = {
                  api_id: $(this).attr("data-zomato-id"),
                  business_name: $(this).attr("data-zomato-name"),
-                 business_loc: $(this).attr("data-zomato-loc")
+                 business_loc: $(this).attr("data-zomato-loc"),
+                 customer_rating: $(this).attr("data-zomato-custrate")
              };
-             $.ajax("/api/reviews", {
+             $.ajax("/api/restprofile", {
                  type: "POST",
                  data: newReview
              }).then(function() {

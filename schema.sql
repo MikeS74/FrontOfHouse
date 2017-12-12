@@ -24,6 +24,7 @@ CREATE TABLE restProfile (
   api_id INT NOT NULL AUTO_INCREMENT,
   business_name VARCHAR(100) NULL,
   business_loc VARCHAR(100) NULL,
+  customer_rating INT NULL,
   PRIMARY KEY (api_id)
 );
 
