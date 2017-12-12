@@ -20,3 +20,10 @@ CREATE TABLE reviews (
   PRIMARY KEY (api_id)
 );
 
+CREATE TABLE restProfile (
+  api_id INT NOT NULL AUTO_INCREMENT,
+  business_name VARCHAR(100) NULL,
+  business_loc VARCHAR(100) NULL,
+  PRIMARY KEY (api_id)
+);
+
