@@ -16,7 +16,7 @@
         
         <!--REVIEW TITLE-->
         <br>User Name:<br>
-  <input type="text" name="userName" id="user_name">
+  <input type="text" name="reviewTitle" id="user_id">
         <br>Business Name:<br>
   <input type="text" name="businessName" id="business_name">
         <br>Business Review:<br>
@@ -64,8 +64,7 @@
             event.preventDefault();
 
         var newForm = {
-            api_id:"12345",
-            user_name: $("#user_name").val().trim(),
+            user_name: $("#user_id").val().trim(),
             business_name: $("#business_name").val().trim(),
             business_review: $("#business_review").val().trim(),
             star_rating: $("#star_rating").val(),
