@@ -25,8 +25,8 @@
     <!-- User input field -->
     <div id="search-bar-div" class="form-group">
         <form id="form" class="topBefore">
-            <header>SEARCH BUSINESS:</header>
-            <input class="input-bar typeahead" id="user-input" type="text" placeholder="NAME">
+            <header>FIND RESTAURANT:</header>
+            <input class="input-bar typeahead" id="user-input" type="text" placeholder="Name">
 
             <!-- Search button -->
             <input class="input-search" id="run-search" type="submit" value="SEARCH">
@@ -64,7 +64,7 @@
              var restLoc = restResults.restaurant.location.address;
              var restRating = restResults.restaurant.user_rating.aggregate_rating;
              var restID = restResults.restaurant.id;
-             var dispAll = $("<p class='rest-list-item'>").html(restName + "<br>" + restLoc + "<br>" + "Customer Rating: " + restRating + "<br>").attr({
+             var dispAll = $("<div class='rest-list-item'>").html('<p style="font-weight:600">' + restName +'</p>' + '<p>' + restLoc +'</p>' + '<p>' + "Customer Rating: " + restRating +'</p>').attr({
                  "data-zomato-id": restID,
                  "data-zomato-name": restName,
                  "data-zomato-loc": restLoc,
