@@ -1,0 +1,28 @@
+option, input, select, textarea, .submit_form {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 1em !important;
+/*    font-weight: 400;*/
+/*  width: 390px !important;*/
+/*  height: 30px !important;*/
+  padding: 0px 5px 0px 5px !important;
+  
+  background: #ffffff !important;
+  outline: none !important;
+  color: #726659 !important;
+  
+  border: solid 1px #b3aca7 !important;
+  
+  transition: all 0.3s ease-in-out !important;
+  -webkit-transition: all 0.3s ease-in-out !important;
+  -moz-transition: all 0.3s ease-in-out !important;
+  -ms-transition: all 0.3s ease-in-out !important;
+}
+
+body {
+        letter-spacing: 1px;
+}
+
+.form-div {
+    width: 600px;
+        margin: 15px auto 15px auto;
+}

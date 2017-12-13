@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
+@import url('https://fonts.googleapis.com/css?family=Lato:400,600');
 
 body {
   font-family: 'Lato', sans-serif;
@@ -10,7 +10,7 @@ body {
 header {
   position: relative;
   margin: 100px 0 25px 0;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-align: center;
   letter-spacing: 7px;
 }
@@ -18,7 +18,7 @@ header {
 #form {
   position: relative;
   width: 500px;
-  margin: 50px auto 100px auto;
+  margin: 0 auto 0 auto
 }
 
 
@@ -35,7 +35,9 @@ header {
 .input-bar {
   font-family: 'Lato', sans-serif !important;
   font-size: 1em !important;
-  width: 350px !important;
+    font-weight: 600;
+    letter-spacing: 2px;
+  width: 390px !important;
   height: 50px !important;
   padding: 0px 15px 0px 15px !important;
   
@@ -58,9 +60,10 @@ header {
 
 .input-search {
 position: relative !important;
-    top: 17px;
+    top: 14px;
   font-family: 'Lato', sans-serif !important;
   font-size: 1em !important;
+    letter-spacing: 2px;
   width: auto !important;
   height: 50px !important;
   padding: 0px 15px 0px 15px !important;

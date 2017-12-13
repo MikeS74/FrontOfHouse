@@ -4,26 +4,32 @@
 <head>
 <!--     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> -->
     <!--NEED TO ADD LINK TO REVIEW.CSS-->
+    <link rel="stylesheet" href="static/assets/css/reset.css" />
+    <link rel="stylesheet" href="static/assets/css/header.css" />
+    <link rel="stylesheet" href="static/assets/css/minimal-form.css" />
+    <link rel="stylesheet" href="static/assets/css/review-form-style.css" />
 <script src="https://code.jquery.com/jquery.js"></script>
 
 </head>
 
 <body>
+    <div class="nav"></div>
     <!--FORM STARTS-->
+    <div class="form-div">
     <form action="/action_page.php">
         <!--COMPANY NAME how is this going to be generated?-->
         COMPANY NAME
-        
+        <br>
         <!--REVIEW TITLE-->
         <br>User Name:<br>
   <input type="text" name="reviewTitle" id="user_id">
-        <br>Business Name:<br>
+        <br><br>Business Name:<br>
   <input type="text" name="businessName" id="business_name">
-        <br>Business Review:<br>
-  <input type="text" name="businessReview" id="business_review">
-        <br>Star Rating:<br><br>
+        <br><br>Business Review:<br>
+        <textarea rows="4" cols="50" type="text" name="businessReview" id="business_review" style="width:100%"></textarea>
+        <br><br>Star Rating:<br>
   <!--OVERALL RATING : STARS-->
-        <select data-placeholder="" class="chosen-select" id="star_rating">
+        <select data-placeholder="" class="chosen-select" id="star_rating" style="width:50px">
             <option value=""></option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -32,17 +38,17 @@
             <option value="5">5</option>
         </select>
        <br><br> Pros:<br>
-  <input type="text" name="pros" id="pros">
-        <br>Cons:<br>
-  <input type="text" name="cons" id="cons">
-        <br>Suggestions to Management:<br>
-  <input type="text" name="suggestions_to_mgmt" id="suggestions_to_mgmt">
+  <input type="text" name="pros" id="pros" style="width:100%">
+        <br><br>Cons:<br>
+  <input type="text" name="cons" id="cons" style="width:100%">
+        <br><br>Suggestions to Management:<br>
+  <input type="text" name="suggestions_to_mgmt" id="suggestions_to_mgmt" style="width:100%">
         <!--Submit-->
-        <br>
+        <br><br>
         <input type="submit" value="Submit" class="submit_form">
         <br>
     </form>
-
+</div>
 <script type="text/javascript">
 
 
