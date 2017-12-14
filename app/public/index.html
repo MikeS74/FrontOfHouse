@@ -76,6 +76,7 @@
          
          $(".rest-list-item").on("click", function(event) {
              var newReview = {
+                 id: 1,
                  api_id: $(this).attr("data-zomato-id"),
                  business_name: $(this).attr("data-zomato-name"),
                  business_loc: $(this).attr("data-zomato-loc"),

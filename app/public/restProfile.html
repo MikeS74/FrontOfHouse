@@ -23,7 +23,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-    
+        
     $.get("/api/all", function(data) {
 
 console.log("RESTPROFILE.HTML RESULTS " + data);
@@ -35,7 +35,13 @@ console.log("RESTPROFILE.HTML RESULTS " + data);
 console.log("RESTPROFILE.HTML RESULTS " + data);
 
 });
-        
+
+         setTimeout(function() {
+
+    $.ajax("/api/all/" + "1", {
+      type: "DELETE",
+    });
+         }, 5000);
 });
     
     </script>
