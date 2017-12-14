@@ -1,9 +1,11 @@
 .list-gen {
     width: 600px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
+    background: #ffffff;
 }
 
 .rest-list-item {
@@ -27,4 +29,17 @@
 .rest-list-item:hover {
   background: #b3aca7;
   color: #ffffff;
+}
+
+.unique-rest-profile {
+    background: #ffffff;
+    width: 600px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.add_button {
+margin-bottom: 15px !important;
 }
