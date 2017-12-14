@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div class="nav"></div>
 
    <div class="unique-rest-profile">
     
@@ -22,95 +23,74 @@
         <p>No reviews yet.</p>
     </div>
     </div>
-   
+   <input type="submit" value="ADD A REVIEW" class="add_button">
    </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        
-        var reviewsObj = {};
-//        var storedReviewIDs = [];
-        var createApiID = "";
-        var createRestName = "";
-        var createRestLoc = "";
-        var createCustRating = "";
-        
-    $.get("/api/temp", function(data) {
-        createApiID = data[1];
-        createRestName = data[2];
-        createRestLoc = data[3];
-        createCustRating = data[4];
-
-console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
-        
-var currentRestDiv = $("<div class='current-rest'>");
-
-             var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName +'</p>' + '<p>' + createRestLoc +'</p>' + '<p>' + "Customer Rating: " + createCustRating +'</p>').attr({
-                 "data-current-id": createApiID
-             });
-             currentRestDiv.append(dispDetails);
-             $("#current-rest").append(currentRestDiv);
-
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////        
-//    $.get("/api/allreviews", function(data) {
-//console.log("RESTPROFILE.HTML RESULTS " + data);
-//});
-
-    $.get("/api/reviewsbyid", function(data) {
-              for (var i = 0; i < data.length; i++) {
-                  
-            var listReviewsDiv = $("<div class='list-reviews-gen'>");
-            reviewsObj = data[i];
-            var userID = reviewsObj.user_id;
-            var dateOfReview = reviewsObj.date;
-            var restReview = reviewsObj.business_review;
-            var starRating = reviewsObj.star_rating;
-            var overallRating = reviewsObj.overall_rating;
-            var pros = reviewsObj.pros;
-            var cons = reviewsObj.cons;
-            var suggestion = reviewsObj.suggestion_to_mgmt;
-            var restID = reviewsObj.api_id;
-
-             var dispAllReviews = $("<div class='single-review'>").html('<p>' + userID + '</p>' + '<p>' + dateOfReview +'</p>'+ '<p>' + restReview +'</p>'+ '<p>' + "Employee Rating: " + starRating +'</p>'+ '<p>' + "Overall Rating: " + overallRating +'</p>'+ '<p>' + "Pros: " + pros +'</p>'+ '<p>' + "Cons: " + cons +'</p>'+ '<p>' + "Suggestions To Management: <br>" + suggestion +'</p>').attr({
+ $(document).ready(function() {
+     
+     var clearTemp = 'setTimeout(function() {$.ajax("/api/temp/" + "1", {type: "DELETE",});}, 2000);';
+     
+     var reviewsObj = {};
+     var createApiID = "";
+     var createRestName = "";
+     var createRestLoc = "";
+     var createCustRating = "";
+     
+     $.get("/api/temp", function(data) {
+         createApiID = data[1];
+         createRestName = data[2];
+         createRestLoc = data[3];
+         createCustRating = data[4];
+         console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
+         var currentRestDiv = $("<div class='current-rest'>");
+         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>').attr({
+             "data-current-id": createApiID
+         });
+         currentRestDiv.append(dispDetails);
+         $("#current-rest").append(currentRestDiv);
+     });
+     
+    $(".add_button").on("click", function(event) {
+        window.location.replace("/form");
+    });    
+     
+     $.get("/api/reviewsbyid", function(data) {
+         
+         for (var i = 0; i < data.length; i++) {
+             
+             var listReviewsDiv = $("<div class='list-reviews-gen'>");
+             reviewsObj = data[i];
+             var userID = reviewsObj.user_id;
+             var dateOfReview = reviewsObj.date;
+             var restReview = reviewsObj.business_review;
+             var starRating = reviewsObj.star_rating;
+             var overallRating = reviewsObj.overall_rating;
+             var pros = reviewsObj.pros;
+             var cons = reviewsObj.cons;
+             var suggestion = reviewsObj.suggestion_to_mgmt;
+             var restID = reviewsObj.api_id;
+             
+             var dispAllReviews = $("<div class='single-review'>").html('<p>' + userID + '</p>' + '<p>' + dateOfReview + '</p>' + '<p>' + restReview + '</p>' + '<p>' + "Employee Rating: " + starRating + '</p>' + '<p>' + "Overall Rating: " + overallRating + '</p>' + '<p>' + "Pros: " + pros + '</p>' + '<p>' + "Cons: " + cons + '</p>' + '<p>' + "Suggestions To Management: <br>" + suggestion + '</p>').attr({
                  "data-rest-id": restID,
-//                 "data-state": "display" 
              });
-                  
-//              var thisRestId = $(".single-review").attr("data-rest-id");
-                  
+             
              if (createApiID != restID) {
                  dispAllReviews = "No reviews yet.";
+             } else if (createApiID === restID) {
+                 listReviewsDiv.append(dispAllReviews);
+                 $("#list-reviews").append(listReviewsDiv);
              }
-            else if (createApiID === restID) {
-                  
-             listReviewsDiv.append(dispAllReviews);
-             $("#list-reviews").append(listReviewsDiv);
-            }
-   
-                  
-//          storedReviewIDs = data[i].api_id;
-      };
-        
-//console.log("RESTPROFILE.HTML RESULTS " + data);
-});        
-////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-         setTimeout(function() {
-
-    $.ajax("/api/temp/" + "1", {
-      type: "DELETE",
-    });
-         }, 2000);
-});
-    
+         };
+     });
+     
+//     setTimeout(function() {
+//         $.ajax("/api/temp/" + "1", {
+//             type: "DELETE",
+//         });
+//     }, 2000);
+ });
     </script>
-
-
-
-
-
 
     <!-- Links and credit -->
 

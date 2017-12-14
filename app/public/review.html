@@ -14,21 +14,21 @@
 
 <body>
     <div class="nav"></div>
-    <!--FORM STARTS-->
+    
+     <div id="current-rest">
+    </div>   
+    
     <div class="form-div">
     <form>
-        <!--COMPANY NAME how is this going to be generated?-->
-        COMPANY NAME
-        <br>
-        <!--REVIEW TITLE-->
         <br>User Name:<br>
   <input type="text" name="reviewTitle" id="user_id" class="form-control">
+<!--
         <br><br>Business Name:<br>
   <input type="text" name="businessName" id="business_name" class="form-control">
+-->
         <br><br>Business Review:<br>
         <textarea rows="4" cols="50" type="text" name="businessReview" id="business_review" class="form-control" style="width:100%"></textarea>
         <br><br>Star Rating:<br>
-  <!--OVERALL RATING : STARS-->
         <select data-placeholder="" class="chosen-select" id="star_rating" style="width:50px">
             <option value=""></option>
             <option value="1">1</option>
@@ -43,73 +43,78 @@
   <input type="text" name="cons" id="cons" class="form-control" style="width:100%">
         <br><br>Suggestions to Management:<br>
   <input type="text" name="suggestions_to_mgmt" id="suggestions_to_mgmt" class="form-control" style="width:100%">
-        <!--Submit-->
         <br><br>
         <input type="submit" value="Submit" class="submit_form">
         <br>
     </form>
 </div>
 <script type="text/javascript">
-
-
-         // $(".rest-list-item").on("click", function(event) {
-         //     var newReview = {
-         //         api_id: $(this).attr("data-zomato-id"),
-         //         business_name: $(this).attr("data-zomato-name"),
-         //         business_loc: $(this).attr("data-zomato-loc")
-         //     };
-         //     $.ajax("/api/reviews", {
-         //         type: "POST",
-         //         data: newReview
-         //     }).then(function() {
-         //         console.log(newReview);
-         //     });
-         // });
-
-        $(".submit_form").on("click", function (event) {
-            event.preventDefault();
-            
-            function validateForm() {
-		  var isValid = true;
-		  $('.form-control').each(function() {
-		    if ( $(this).val() === '' )
-		        isValid = false;
-		  });
-		  $('.chosen-select').each(function() {
-		  	if( $(this).val() === "")
-		  		isValid = false
-		  })
-		  return isValid;
-		}
-        
-        if (validateForm() == true) {
-
-        var newForm = {
-            user_name: $("#user_id").val().trim(),
-            business_name: $("#business_name").val().trim(),
-            business_review: $("#business_review").val().trim(),
-            star_rating: $("#star_rating").val(),
-            pros: $("#pros").val().trim(),
-            cons: $("#cons").val().trim(),
-            suggestion_to_mgmt: $("#suggestions_to_mgmt").val().trim()
-        };
-
-        $.ajax("/api/reviews", {
-                 type: "POST",
-                 data: newForm
-             }).then(function() {
-                 console.log(newForm);
-             });
-
-console.log(newForm);
-window.location.replace("/restaurant");
-            } 
-            else {
-                alert("Please fill out a review before submitting!");
-            }
-            return false;
-});
+$(document).ready(function() {
+     
+//     var clearTemp = 'setTimeout(function() {$.ajax("/api/temp/" + "1", {type: "DELETE",});}, 2000);';
+     
+     var createApiID = "";
+     var createRestName = "";
+     var createRestLoc = "";
+     var createCustRating = "";
+     
+     $.get("/api/temp", function(data) {
+         createApiID = data[1];
+         createRestName = data[2];
+         createRestLoc = data[3];
+         createCustRating = data[4];
+         console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
+         var currentRestDiv = $("<div class='current-rest'>");
+         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>').attr({
+             "data-current-id": createApiID
+         });
+         currentRestDiv.append(dispDetails);
+         $("#current-rest").append(currentRestDiv);
+     });
    
+///////////////////////////////////////////////////////////////////////////////////////////////////////////    
+ $(".submit_form").on("click", function(event) {
+     event.preventDefault();
+
+//     function validateForm() {
+//         var isValid = true;
+//         $('.form-control').each(function() {
+//             if ($(this).val() === '') isValid = false;
+//         });
+//         $('.chosen-select').each(function() {
+//             if ($(this).val() === "") isValid = false
+//         }) return isValid;
+//     }
+//     
+//     if (validateForm() == true) {
+         var newForm = {
+             api_id: createApiID,
+             user_id: "test123456",
+             user_name: $("#user_id").val().trim(),
+             business_name: createRestName,
+             business_loc: createRestLoc,
+             business_review: $("#business_review").val().trim(),
+             star_rating: $("#star_rating").val(),
+             overall_rating: "3",
+             pros: $("#pros").val().trim(),
+             cons: $("#cons").val().trim(),
+             suggestion_to_mgmt: $("#suggestions_to_mgmt").val().trim()
+         };
+         $.ajax("/api/reviews", {
+             type: "POST",
+             data: newForm
+         }).then(function() {
+             console.log(newForm);
+         });
+         console.log(newForm);
+         window.location.replace("/restaurant");
+//     } 
+//     else {
+//         alert("Please fill out a review before submitting!");
+//     }
+//     return false;
+ });
+ });
 </script>
 
  <!-- jqeury link -->

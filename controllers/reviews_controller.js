@@ -3,88 +3,49 @@ var router = express.Router();
 var review = require("../models/review.js");
 var restProf = require("../models/restprofile.js");
 
-//Route creation and setup
 router.get("/", function(req, res) {
-  review.selectAll(function(data) {
-//Handlebars setup data
-    var hbsObject = {
-      reviews: data
-    };
-    res.render("index", hbsObject);
-  });
+    review.selectAll(function(data) {
+        var hbsObject = {
+            reviews: data
+        };
+        res.render("index", hbsObject);
+    });
 });
-
 router.post("/api/reviews", function(req, res) {
-  review.insertOne([
-    "api_id, user_id, user_name, business_name, business_loc, business_review, star_rating, overall_rating, pros, cons, suggestion_to_mgmt, date"
-  ], [
-      req.body.api_id, 
-      req.body.user_id, 
-      req.body.user_name, 
-      req.body.business_name, 
-      req.body.business_loc, 
-      req.body.business_review, 
-      req.body.star_rating, 
-      req.body.overall_rating, 
-      req.body.pros, 
-      req.body.cons, 
-      req.body.suggestion_to_mgmt, 
-      req.body.date
-  ], function(result) {
-    res.json({ id: result.insertId });
-  });
+    review.insertOne(["api_id, user_id, user_name, business_name, business_loc, business_review, star_rating, overall_rating, pros, cons, suggestion_to_mgmt"], [req.body.api_id, req.body.user_id, req.body.user_name, req.body.business_name, req.body.business_loc, req.body.business_review, req.body.star_rating, req.body.overall_rating, req.body.pros, req.body.cons, req.body.suggestion_to_mgmt], function(result) {
+        res.json({
+            id: result.insertId
+        });
+    });
 });
-
 router.post("/api/restprofile", function(req, res) {
-  restProf.insertOne([
-    "id, api_id, business_name, business_loc, customer_rating"
-  ], [
-      req.body.id,
-      req.body.api_id, 
-      req.body.business_name, 
-      req.body.business_loc, 
-      req.body.customer_rating
-  ], function(result) {
-    res.json({ id: result.insertId });
-  });
+    restProf.insertOne(["id, api_id, business_name, business_loc, customer_rating"], [req.body.id, req.body.api_id, req.body.business_name, req.body.business_loc, req.body.customer_rating], function(result) {
+        res.json({
+            id: result.insertId
+        });
+    });
 });
-
 router.get("/api/temp", function(req, res) {
-  restProf.selectAll(function(result) {
-    res.json([result[0].id, result[0].api_id, result[0].business_name, result[0].business_loc, result[0].customer_rating]);
+    restProf.selectAll(function(result) {
+        res.json([result[0].id, result[0].api_id, result[0].business_name, result[0].business_loc, result[0].customer_rating]);
         console.log("TEMP SQL PROFILE RESULTS " + result[0].api_id + " " + result[0].business_name + " " + result[0].business_loc);
-  });
+    });
 });
-
 router.get("/api/reviewsbyid", function(req, res) {
-  review.selectAll(function(result) {
-              res.json(result);
-
-//        console.log("SQL REVIEW TABLE RESULTS " + "");
-  });
+    review.selectAll(function(result) {
+        res.json(result);
+    });
 });
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//router.get("/api/allreviews", function(req, res) {
-//  review.selectAll(function(result) {
-//    res.json(result[0].api_id + " " + result[0].user_name + " " + result[0].business_review);
-//        console.log("SQL REVIEW TABLE RESULTS " + result[0].api_id + " " + result[0].user_name + " " + result[0].business_review);
-//  });
-//});
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
- router.delete("/api/temp/:id", function(req, res) {
-   var condition = "id = " + req.params.id;
-
-   restProf.delete(condition, function(result) {
-     if (result.affectedRows == 0) {
-       return res.status(404).end();
-     } else {
-       res.status(200).end();
-     }
-   });
- });
-
+router.delete("/api/temp/:id", function(req, res) {
+    var condition = "id=" + req.params.id;
+    restProf.delete(condition, function(result) {
+        if (result.affectedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
 
 // router.put("/api/reviews/:id", function(req, res) {
 //   var condition = "id = " + req.params.id;
