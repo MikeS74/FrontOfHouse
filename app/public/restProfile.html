@@ -15,7 +15,7 @@
     <img class="foh-logo" src="static/assets/img/FOH-logo-blue.png" alt="Front of House">
     </div>
 
-   <div class="unique-rest-profile">
+   <div class="unique-rest-profile" style="letter-spacing: 1px">
     
     <div id="current-rest">
     </div>
@@ -73,7 +73,7 @@
              var suggestion = reviewsObj.suggestion_to_mgmt;
              var restID = reviewsObj.api_id;
              
-             var dispAllReviews = $("<div class='single-review'>").html('<p>' + userID + '</p>' + '<p>' + dateOfReview + '</p>' + '<p>' + restReview + '</p>' + '<p>' + "Employee Rating: " + starRating + '</p>' + '<p>' + "Overall Rating: " + overallRating + '</p>' + '<p>' + "Pros: " + pros + '</p>' + '<p>' + "Cons: " + cons + '</p>' + '<p>' + "Suggestions To Management: <br>" + suggestion + '</p>').attr({
+             var dispAllReviews = $("<div class='single-review'>").html('<p style="font-weight:600">' + userID + '</p>' + '<p>' + dateOfReview + '</p><br>' + '<p class="review-text">' + restReview + '</p><br>' + '<p>' + "Employee Rating: " + starRating + '</p>' + '<p>' + "Overall Rating: " + overallRating + '</p><br>' + '<p>' + "Pros: " + pros + '</p><br>' + '<p>' + "Cons: " + cons + '</p><br>' + '<p>' + "Suggestions To Management: <br>" + suggestion + '</p><hr>').attr({
                  "data-rest-id": restID,
              });
              
