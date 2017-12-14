@@ -55,6 +55,13 @@ router.get("/api/all", function(req, res) {
   });
 });
 
+router.get("/api/allreviews", function(req, res) {
+  review.selectAll(function(result) {
+    res.json(result[0].api_id + " " + result[0].user_name + " " + result[0].business_review);
+        console.log("SQL REVIEW TABLE RESULTS " + result[0].api_id + " " + result[0].user_name + " " + result[0].business_review);
+  });
+});
+
 
 
 // router.put("/api/reviews/:id", function(req, res) {
