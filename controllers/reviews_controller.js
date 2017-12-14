@@ -49,21 +49,31 @@ router.post("/api/restprofile", function(req, res) {
   });
 });
 
-router.get("/api/all", function(req, res) {
+router.get("/api/temp", function(req, res) {
   restProf.selectAll(function(result) {
-    res.json(result[0].id + " " + result[0].api_id + " " + result[0].business_name + " " + result[0].business_loc);
+    res.json([result[0].id, result[0].api_id, result[0].business_name, result[0].business_loc, result[0].customer_rating]);
         console.log("TEMP SQL PROFILE RESULTS " + result[0].api_id + " " + result[0].business_name + " " + result[0].business_loc);
   });
 });
 
-router.get("/api/allreviews", function(req, res) {
+router.get("/api/reviewsbyid", function(req, res) {
   review.selectAll(function(result) {
-    res.json(result[0].api_id + " " + result[0].user_name + " " + result[0].business_review);
-        console.log("SQL REVIEW TABLE RESULTS " + result[0].api_id + " " + result[0].user_name + " " + result[0].business_review);
+              res.json(result);
+
+//        console.log("SQL REVIEW TABLE RESULTS " + "");
   });
 });
 
- router.delete("/api/all/:id", function(req, res) {
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//router.get("/api/allreviews", function(req, res) {
+//  review.selectAll(function(result) {
+//    res.json(result[0].api_id + " " + result[0].user_name + " " + result[0].business_review);
+//        console.log("SQL REVIEW TABLE RESULTS " + result[0].api_id + " " + result[0].user_name + " " + result[0].business_review);
+//  });
+//});
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ router.delete("/api/temp/:id", function(req, res) {
    var condition = "id = " + req.params.id;
 
    restProf.delete(condition, function(result) {
