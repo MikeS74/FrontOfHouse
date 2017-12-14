@@ -22,7 +22,7 @@
      <br>  
     <div id="list-reviews">
     <div class='list-reviews-gen'>
-        <p>No reviews yet.</p><br>
+        <p class="no-reviews">No reviews yet.</p>
     </div>
     </div>
    <input type="submit" value="ADD A REVIEW" class="add_button">
@@ -77,9 +77,8 @@
                  "data-rest-id": restID,
              });
              
-             if (createApiID != restID) {
-                 dispAllReviews = "No reviews yet.";
-             } else if (createApiID === restID) {
+             if (createApiID === restID) {
+                 $(".no-reviews").text("");
                  listReviewsDiv.append(dispAllReviews);
                  $("#list-reviews").append(listReviewsDiv);
              }
