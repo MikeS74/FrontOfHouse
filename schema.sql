@@ -5,6 +5,7 @@ CREATE DATABASE frontOfHouse;
 USE frontOfHouse;
 
 CREATE TABLE reviews (
+  id int NOT NULL AUTO_INCREMENT,
   api_id VARCHAR(50) NULL,
   user_id VARCHAR(50) NULL,
   user_name VARCHAR(50) NULL,
@@ -16,19 +17,17 @@ CREATE TABLE reviews (
   pros VARCHAR(500) NULL,
   cons VARCHAR(500) NULL,
   suggestion_to_mgmt VARCHAR (500) NULL,
-  date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP  
+  date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE restProfile (
-  api_id INT NOT NULL AUTO_INCREMENT,
+  id int NOT NULL,
+  api_id VARCHAR(50) NULL,
   business_name VARCHAR(100) NULL,
   business_loc VARCHAR(100) NULL,
-  customer_rating INT NULL,
-  PRIMARY KEY (api_id)
+  customer_rating INT NULL
 );
-
-INSERT INTO restProfile (api_id, business_name, business_loc, customer_rating)
-VALUES ('16819338', 'Panera Bread', '12131 Ventura Blvd, Studio City 91604', '3');
 
 INSERT INTO reviews (api_id, user_id, user_name, business_name, business_loc, business_review, star_rating, overall_rating, pros, cons, suggestion_to_mgmt)
 VALUES ("16819338", "tv26cbyx", "Matt", "Panera Bread", "12131 Ventura Blvd, Studio City 91604", 

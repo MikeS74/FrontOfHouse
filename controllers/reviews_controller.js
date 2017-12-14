@@ -37,8 +37,9 @@ router.post("/api/reviews", function(req, res) {
 
 router.post("/api/restprofile", function(req, res) {
   restProf.insertOne([
-    "api_id, business_name, business_loc, customer_rating"
+    "id, api_id, business_name, business_loc, customer_rating"
   ], [
+      req.body.id,
       req.body.api_id, 
       req.body.business_name, 
       req.body.business_loc, 
@@ -50,7 +51,7 @@ router.post("/api/restprofile", function(req, res) {
 
 router.get("/api/all", function(req, res) {
   restProf.selectAll(function(result) {
-    res.json(result[0].api_id + " " + result[0].business_name + " " + result[0].business_loc);
+    res.json(result[0].id + " " + result[0].api_id + " " + result[0].business_name + " " + result[0].business_loc);
         console.log("TEMP SQL PROFILE RESULTS " + result[0].api_id + " " + result[0].business_name + " " + result[0].business_loc);
   });
 });
@@ -62,6 +63,17 @@ router.get("/api/allreviews", function(req, res) {
   });
 });
 
+ router.delete("/api/all/:id", function(req, res) {
+   var condition = "id = " + req.params.id;
+
+   restProf.delete(condition, function(result) {
+     if (result.affectedRows == 0) {
+       return res.status(404).end();
+     } else {
+       res.status(200).end();
+     }
+   });
+ });
 
 
 // router.put("/api/reviews/:id", function(req, res) {
@@ -81,7 +93,7 @@ router.get("/api/allreviews", function(req, res) {
 // router.delete("/api/reviews/:id", function(req, res) {
 //   var condition = "id = " + req.params.id;
 
-//   review.delete(condition, function(result) {
+//   restProf.delete(condition, function(result) {
 //     if (result.affectedRows == 0) {
 //       return res.status(404).end();
 //     } else {
