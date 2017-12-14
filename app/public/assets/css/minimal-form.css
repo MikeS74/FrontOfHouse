@@ -124,3 +124,12 @@ position: relative !important;
   background: #ffffff !important;
   color: #726659 !important;
 }
+
+.blurb {
+font-size: 16px;
+background: rgba(255, 255, 255, 0.26);
+width: 335px;
+text-align: center;
+color: #191919;
+margin: 0 auto 0 auto;
+}

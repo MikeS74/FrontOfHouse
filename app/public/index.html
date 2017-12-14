@@ -33,6 +33,7 @@
             <!-- Search button -->
             <input class="input-search" id="run-search" type="submit" value="SEARCH">
         </form>
+        <br><br><br><br><br><br><br><br><p class="blurb">A place for the service industry to have a voice.</p>
     </div>
     
     <div id="list-view">
@@ -53,6 +54,7 @@ $(document).ready(function() {
      var search = $("#user-input").val().trim();
          
      $("#search-bar-div").hide();
+     $(".blurb").hide();
          
      var queryURL = "https://developers.zomato.com/api/v2.1/search?q=" + search + "&lat=34.0353061&lon=-118.3794192&radius=13%2C000" + "&apikey=abf456dfeacd356e5b295aa8cb32a4a6";
          
