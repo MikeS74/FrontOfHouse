@@ -27,6 +27,9 @@ CREATE TABLE restProfile (
   PRIMARY KEY (api_id)
 );
 
+INSERT INTO restProfile (api_id, business_name, business_loc, customer_rating)
+VALUES ('16819338', 'Panera Bread', '12131 Ventura Blvd, Studio City 91604', '3');
+
 INSERT INTO reviews (api_id, user_id, user_name, business_name, business_loc, business_review, star_rating, overall_rating, pros, cons, suggestion_to_mgmt)
 VALUES ("16819338", "tv26cbyx", "Matt", "Panera Bread", "12131 Ventura Blvd, Studio City 91604", 
 "When I worked at Panera, we put hair in the brownies because we hate our jobs and we're sick of making brownies. They should pay us more and quit giving everyone and their dog's Panera membership cards!", 
