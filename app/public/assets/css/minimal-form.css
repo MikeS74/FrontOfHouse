@@ -40,7 +40,7 @@ body {
 }
 */
 
-header {
+header {border-radius: 10px;
     color: #ffffff;
   position: relative;
   margin: 100px auto 25px auto;
@@ -126,6 +126,7 @@ position: relative !important;
 }
 
 .blurb {
+border-radius: 7px;
 font-size: 16px;
 background: rgba(255, 255, 255, 0.26);
 width: 335px;
