@@ -48,6 +48,15 @@ router.post("/api/restprofile", function(req, res) {
   });
 });
 
+router.get("/api/all", function(req, res) {
+  restProf.selectAll(function(result) {
+    res.json(result[0].api_id + " " + result[0].business_name + " " + result[0].business_loc);
+        console.log("TEMP SQL PROFILE RESULTS " + result[0].api_id + " " + result[0].business_name + " " + result[0].business_loc);
+  });
+});
+
+
+
 // router.put("/api/reviews/:id", function(req, res) {
 //   var condition = "id = " + req.params.id;
 
