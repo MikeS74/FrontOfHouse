@@ -11,8 +11,10 @@
 
 <body>
     
-    
-<div class="nav"></div>
+<div class="background">   
+<div class="nav">
+    <img class="foh-logo" src="static/assets/img/FOH-logo-blue.png" alt="Front of House">
+    </div>
     
     <!-- Upper left Bar of links (Write a review, Company) -->
 
@@ -37,11 +39,14 @@
     
     
     </div>
-    
+    </div> 
     <script src="https://code.jquery.com/jquery.js"></script>
     
 <script type="text/javascript">
     
+$(document).ready(function() {
+   $.ajax("/api/temp/" + "1", {type: "DELETE",});
+  });   
      $("#run-search").on("click", function(event) {
      event.preventDefault();
          

@@ -1,6 +1,17 @@
 .nav {
     height: 90px;
     width: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
     background-color: white;
-    border: solid;
+/*    border: solid;*/
+    background-image: url(../img/FOH-gradient-bar.png)
+}
+
+.foh-logo {
+    margin-left: 15px;
+    width: 350px;
+    position: relative;
+    top: 15px;
 }
