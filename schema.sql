@@ -12,8 +12,8 @@ CREATE TABLE reviews (
   business_name VARCHAR(100) NULL,
   business_loc VARCHAR(100) NULL,
   business_review VARCHAR(500) NULL,
-  star_rating INT NULL,
-  overall_rating INT NULL,
+  star_rating DECIMAL(2, 1) NULL,
+  overall_rating DECIMAL(2, 1) NULL,
   pros VARCHAR(500) NULL,
   cons VARCHAR(500) NULL,
   suggestion_to_mgmt VARCHAR (500) NULL,
@@ -26,7 +26,7 @@ CREATE TABLE restProfile (
   api_id VARCHAR(50) NULL,
   business_name VARCHAR(100) NULL,
   business_loc VARCHAR(100) NULL,
-  customer_rating INT NULL
+  customer_rating DECIMAL(2, 1) NULL
 );
 
 INSERT INTO reviews (api_id, user_id, user_name, business_name, business_loc, business_review, star_rating, overall_rating, pros, cons, suggestion_to_mgmt)
