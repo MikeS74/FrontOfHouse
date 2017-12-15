@@ -19,7 +19,6 @@
     
     <div id="current-rest">
     </div>
-     <br>  
     <div id="list-reviews">
     <div class='list-reviews-gen'>
         <p class="no-reviews">No reviews yet.</p>
@@ -46,7 +45,7 @@
          createCustRating = data[4];
 //         console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
          var currentRestDiv = $("<div class='current-rest'>");
-         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>').attr({
+         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p><hr>').attr({
              "data-current-id": createApiID
          });
          currentRestDiv.append(dispDetails);
