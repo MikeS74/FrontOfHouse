@@ -44,7 +44,7 @@
          createRestName = data[2];
          createRestLoc = data[3];
          createCustRating = data[4];
-         console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
+//         console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
          var currentRestDiv = $("<div class='current-rest'>");
          var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>').attr({
              "data-current-id": createApiID
@@ -64,7 +64,9 @@
              var listReviewsDiv = $("<div class='list-reviews-gen'>");
              reviewsObj = data[i];
              var userID = reviewsObj.user_id;
+             var userName = reviewsObj.user_name;
              var dateOfReview = reviewsObj.date;
+             var timeFormat = dateOfReview.split("T");
              var restReview = reviewsObj.business_review;
              var starRating = reviewsObj.star_rating;
              var overallRating = reviewsObj.overall_rating;
@@ -72,8 +74,8 @@
              var cons = reviewsObj.cons;
              var suggestion = reviewsObj.suggestion_to_mgmt;
              var restID = reviewsObj.api_id;
-             
-             var dispAllReviews = $("<div class='single-review'>").html('<p style="font-weight:600">' + userID + '</p>' + '<p>' + dateOfReview + '</p><br>' + '<p class="review-text">' + restReview + '</p><br>' + '<p>' + "Employee Rating: " + starRating + '</p>' + '<p>' + "Overall Rating: " + overallRating + '</p><br>' + '<p>' + "Pros: " + pros + '</p><br>' + '<p>' + "Cons: " + cons + '</p><br>' + '<p>' + "Suggestions To Management: <br>" + suggestion + '</p><hr>').attr({
+// console.log(reviewsObj);            
+             var dispAllReviews = $("<div class='single-review'>").html('<p style="font-weight:600">' + userName + '</p>' + '<p>' + timeFormat[0] + '</p><br>' + '<p class="review-text">' + restReview + '</p><br>' + '<p>' + "Employee Rating: " + starRating + '</p>' + '<p>' + "Overall Rating: " + overallRating + '</p><br>' + '<p>' + "Pros: " + pros + '</p><br>' + '<p>' + "Cons: " + cons + '</p><br>' + '<p>' + "Suggestions To Management: <br>" + suggestion + '</p><hr>').attr({
                  "data-rest-id": restID,
              });
              
