@@ -50,8 +50,19 @@ header {border-radius: 10px;
   letter-spacing: 7px;
     background: rgba(77, 77, 77, .3);
     width: 350px
-        
+}
 
+.header2 {
+    border-radius: 10px;
+    color: #ffffff;
+  position: relative;
+  margin: 0 auto 10px auto;
+/*    color: black;*/
+  font-size: 1.2em;
+  text-align: center;
+  letter-spacing: 7px;
+    background: rgba(31, 31, 31, 0.3);
+    width: 350px
 }
 
 #form {

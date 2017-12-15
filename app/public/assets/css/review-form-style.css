@@ -33,6 +33,7 @@ body {
     height: 100%;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 10px;
 }
 
 .rest-details {
