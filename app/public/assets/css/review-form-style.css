@@ -4,7 +4,7 @@ option, input, select, textarea, .submit_form {
 /*    font-weight: 400;*/
 /*  width: 390px !important;*/
 /*  height: 30px !important;*/
-  padding: 0px 5px 0px 5px !important;
+  padding: 0px 5px 0px 5px;
   
   background: #ffffff !important;
   outline: none !important;
@@ -22,21 +22,22 @@ body {
         letter-spacing: 1px;
 }
 
-.form-div {
-    width: 600px;
-        margin: 0 auto 0 auto;
+form {
+    width: 580px !important;
+/*        margin: 0 auto 0 auto;*/
+
 }
 
 .review-container {
     background: #ffffff;
-    width: 620px;
+    width: 600px;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10px;
+        padding: 15px;
 }
 
 .rest-details {
-padding-left: 10px;
+/*padding-left: 10px;*/
     width: 400px
 }

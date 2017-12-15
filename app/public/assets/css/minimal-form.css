@@ -139,9 +139,31 @@ position: relative !important;
 .blurb {
 border-radius: 7px;
 font-size: 16px;
-background: rgba(255, 255, 255, 0.26);
-width: 335px;
+background: rgba(255, 255, 255, 0.44);
+width: 235px;
 text-align: center;
-color: #191919;
+color: #292929;
 margin: 0 auto 0 auto;
+}
+
+.login-div {
+    padding: 0;
+    margin: 0 10px 0 0;
+    float: right;
+    position: relative;
+    top: -60px;
+/*
+    width: 180px;
+    height: 100px;
+    position: absolute;
+*/
+}
+
+#txtEmail, #txtPassword, #btnLogin {
+    padding-left: 5px;
+    font-family: 'Lato', sans-serif !important;
+  font-size: 14px !important;
+    font-weight: 400;
+    letter-spacing: 2px;
+border: solid 1px #b3aca7 !important;
 }

@@ -20,7 +20,7 @@
          <p class="header2"> WRITE A REVIEW</p>
     </div>   
     
-    <div class="form-div">
+<!--    <div class="form-div">-->
     <form>
         <br>User Name:<br>
   <input type="text" name="reviewTitle" id="user_id" class="form-control">
@@ -29,7 +29,7 @@
   <input type="text" name="businessName" id="business_name" class="form-control">
 -->
         <br><br>Business Review:<br>
-        <textarea rows="4" cols="50" type="text" name="businessReview" id="business_review" class="form-control" style="width:100%"></textarea>
+        <textarea rows="4" cols="50" type="text" name="businessReview" id="business_review" class="form-control" style="width:570px"></textarea>
         <br><br>Star Rating:<br>
         <select data-placeholder="" class="chosen-select" id="star_rating" style="width:50px">
             <option value=""></option>
@@ -40,16 +40,16 @@
             <option value="5">5</option>
         </select>
        <br><br> Pros:<br>
-  <input type="text" name="pros" id="pros" class="form-control" style="width:100%">
+  <input type="text" name="pros" id="pros" class="form-control" style="width:570px">
         <br><br>Cons:<br>
-  <input type="text" name="cons" id="cons" class="form-control" style="width:100%">
+  <input type="text" name="cons" id="cons" class="form-control" style="width:570px">
         <br><br>Suggestions to Management:<br>
-  <input type="text" name="suggestions_to_mgmt" id="suggestions_to_mgmt" class="form-control" style="width:100%">
+  <input type="text" name="suggestions_to_mgmt" id="suggestions_to_mgmt" class="form-control" style="width:570px">
         <br><br>
         <input type="submit" value="Submit" class="submit_form">
         <br>
     </form>
-</div>
+<!--</div>-->
      </div>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -60,7 +60,8 @@ $(document).ready(function() {
      var createRestName = "";
      var createRestLoc = "";
      var createCustRating = "";
-     
+     var fakeRating = 3.7;
+    
      $.get("/api/temp", function(data) {
          createApiID = data[1];
          createRestName = data[2];
@@ -68,7 +69,7 @@ $(document).ready(function() {
          createCustRating = data[4];
          console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
          var currentRestDiv = $("<div class='current-rest'>");
-         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>').attr({
+         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>' + '<p>' + "Overall Rating: " + fakeRating + '</p>').attr({
              "data-current-id": createApiID
          });
          currentRestDiv.append(dispDetails);

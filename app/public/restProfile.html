@@ -37,6 +37,7 @@
      var createRestName = "";
      var createRestLoc = "";
      var createCustRating = "";
+     var fakeRating = 3.7;
      
      $.get("/api/temp", function(data) {
          createApiID = data[1];
@@ -45,7 +46,7 @@
          createCustRating = data[4];
 //         console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
          var currentRestDiv = $("<div class='current-rest'>");
-         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p><hr>').attr({
+         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>' + '<p>' + "Overall Rating: " + fakeRating + '</p> <hr>').attr({
              "data-current-id": createApiID
          });
          currentRestDiv.append(dispDetails);
@@ -80,8 +81,8 @@
              
              if (createApiID === restID) {
                  $(".no-reviews").text("");
-                 listReviewsDiv.append(dispAllReviews);
-                 $("#list-reviews").append(listReviewsDiv);
+                 listReviewsDiv.prepend(dispAllReviews);
+                 $("#list-reviews").prepend(listReviewsDiv);
              }
          };
      });

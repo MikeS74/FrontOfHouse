@@ -16,6 +16,11 @@
     <a href="/"> <img class="foh-logo" src="static/assets/img/FOH-logo-blue.png" alt="Front of House"></a>
     </div>
     
+    <div class="login-div">
+    <input id="txtEmail" type="email" placeholder="Email" class="m-2">
+    <input id="txtPassword" type="password" placeholder="Password" class="m-2">
+    <button id="btnLogin" class="btn btn-action m-2">Login</button>
+    </div>
     <!-- Upper left Bar of links (Write a review, Company) -->
 
     <!-- Upper right Login link -->
@@ -34,7 +39,7 @@
             <input class="input-search" id="run-search" type="submit" value="SEARCH">
         </form>
         <br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <p class="blurb">A place for the service industry to have a voice.</p>
+        <p class="blurb">A voice for the service industry.</p>
     </div>
     
     <div id="list-view">
@@ -56,6 +61,7 @@ $(document).ready(function() {
          
      $("#search-bar-div").hide();
      $(".blurb").hide();
+    $(".login-div").hide();
          
      var queryURL = "https://developers.zomato.com/api/v2.1/search?q=" + search + "&lat=34.0353061&lon=-118.3794192&radius=13%2C000" + "&apikey=abf456dfeacd356e5b295aa8cb32a4a6";
          
