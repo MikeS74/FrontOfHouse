@@ -43,7 +43,7 @@ Restaurant workers, listen up!  Ever wondered what you are getting into when you
 
 - MySQL and Sequelize
 
-- Firebase
+- Heroku
 
 - ORM
 
