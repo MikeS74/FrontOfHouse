@@ -10,118 +10,98 @@
 </head>
 
 <body>
-    
-<div class="background">   
-<div class="nav">
-    <a href="/"> <img class="foh-logo" src="static/assets/img/FOH-logo-blue.png" alt="Front of House"></a>
+    <div class="background">
+        <div class="nav">
+            <a href="/"> <img class="foh-logo" src="static/assets/img/FOH-logo-blue.png" alt="Front of House"></a>
+        </div>
+        <div class="login-div">
+            <input id="txtEmail" type="email" placeholder="Email" class="m-2">
+            <input id="txtPassword" type="password" placeholder="Password" class="m-2">
+            <button id="btnLogin" class="btn btn-action m-2">Login</button>
+        </div>
+        <div id="search-bar-div" class="form-group">
+            <form id="form" class="topBefore">
+                <header> FIND A RESTAURANT</header>
+                <input class="input-bar typeahead" id="user-input" type="text" placeholder="Name">
+                <input class="input-search" id="run-search" type="submit" value="SEARCH">
+            </form>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p class="blurb">A voice for the service industry.</p>
+        </div>
+        <div id="list-view">
+        </div>
     </div>
-    
-    <div class="login-div">
-    <input id="txtEmail" type="email" placeholder="Email" class="m-2">
-    <input id="txtPassword" type="password" placeholder="Password" class="m-2">
-    <button id="btnLogin" class="btn btn-action m-2">Login</button>
-    </div>
-    <!-- Upper left Bar of links (Write a review, Company) -->
-
-    <!-- Upper right Login link -->
-
-    <!-- Recent Reviews -->
-
-    <!-- Top Places (on the left) Worst Places (on the right) -->
-
-    <!-- User input field -->
-    <div id="search-bar-div" class="form-group">
-        <form id="form" class="topBefore">
-            <header> FIND A RESTAURANT</header>
-            <input class="input-bar typeahead" id="user-input" type="text" placeholder="Name">
-
-            <!-- Search button -->
-            <input class="input-search" id="run-search" type="submit" value="SEARCH">
-        </form>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <p class="blurb">A voice for the service industry.</p>
-    </div>
-    
-    <div id="list-view">
-    
-    
-    </div>
-    </div> 
     <script src="https://code.jquery.com/jquery.js"></script>
-    
-<script type="text/javascript">
-    
-$(document).ready(function() {
-   $.ajax("/api/temp/" + "1", {type: "DELETE",});
-  });   
-     $("#run-search").on("click", function(event) {
-     event.preventDefault();
-         
-     var search = $("#user-input").val().trim();
-         
-     $("#search-bar-div").hide();
-     $(".blurb").hide();
-    $(".login-div").hide();
-         
-     var queryURL = "https://developers.zomato.com/api/v2.1/search?q=" + search + "&lat=34.0353061&lon=-118.3794192&radius=13%2C000" + "&apikey=abf456dfeacd356e5b295aa8cb32a4a6";
-         
-     $.ajax({
-         url: queryURL,
-         method: "GET"
-     }).done(function(response) {
-         var results = response.restaurants;
-         
-         for (var i = 0; i < results.length; i++) {
-             var listDiv = $("<div class='list-gen'>");
-             var restResults = response.restaurants[i];
-             var restName = restResults.restaurant.name;
-             var restLoc = restResults.restaurant.location.address;
-             var restRating = restResults.restaurant.user_rating.aggregate_rating;
-             var restID = restResults.restaurant.id;
-             var dispAll = $("<div class='rest-list-item'>").html('<p style="font-weight:600">' + restName +'</p>' + '<p>' + restLoc +'</p>' + '<p>' + "Customer Rating: " + restRating +'</p>').attr({
-                 "data-zomato-id": restID,
-                 "data-zomato-name": restName,
-                 "data-zomato-loc": restLoc,
-                 "data-zomato-custrate": restRating
-             });
-             listDiv.append(dispAll);
-             $("#list-view").append(listDiv);
-         };
-         
-         $(".rest-list-item").on("click", function(event) {
-             var newReview = {
-                 id: 1,
-                 api_id: $(this).attr("data-zomato-id"),
-                 business_name: $(this).attr("data-zomato-name"),
-                 business_loc: $(this).attr("data-zomato-loc"),
-                 customer_rating: $(this).attr("data-zomato-custrate")
-             };
-             $.ajax("/api/restprofile", {
-                 type: "POST",
-                 data: newReview
-             }).then(function() {
-                 console.log(newReview);
-             });
-             window.location.replace("/restaurant");
-         });
-     });
- });
-</script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax("/api/temp/" + "1", { type: "DELETE", });
+    });
+    $("#run-search").on("click", function(event) {
+        event.preventDefault();
 
-    <!-- Links and credit -->
+        var search = $("#user-input").val().trim();
 
-    <!-- jQuery JS -->
-   
-    <!-- jqeury link -->
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    
-    <!--typehead link -->
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.js"></script>
-    
-    <!-- bloodhound link -->
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.js"></script>
+        $("#search-bar-div").hide();
+        $(".blurb").hide();
+        $(".login-div").hide();
 
-    <!-- Code to the JavaScript File -->
+        var queryURL = "https://developers.zomato.com/api/v2.1/search?q=" + search + "&lat=34.0353061&lon=-118.3794192&radius=13%2C000" + "&apikey=abf456dfeacd356e5b295aa8cb32a4a6";
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).done(function(response) {
+            var results = response.restaurants;
+
+            for (var i = 0; i < results.length; i++) {
+                var listDiv = $("<div class='list-gen'>");
+                var restResults = response.restaurants[i];
+                var restName = restResults.restaurant.name;
+                var restLoc = restResults.restaurant.location.address;
+                var restRating = restResults.restaurant.user_rating.aggregate_rating;
+                var restID = restResults.restaurant.id;
+                var dispAll = $("<div class='rest-list-item'>").html('<p style="font-weight:600">' + restName + '</p>' + '<p>' + restLoc + '</p>' + '<p>' + "Customer Rating: " + restRating + '</p>').attr({
+                    "data-zomato-id": restID,
+                    "data-zomato-name": restName,
+                    "data-zomato-loc": restLoc,
+                    "data-zomato-custrate": restRating
+                });
+                listDiv.append(dispAll);
+                $("#list-view").append(listDiv);
+            };
+
+            $(".rest-list-item").on("click", function(event) {
+                var newReview = {
+                    id: 1,
+                    api_id: $(this).attr("data-zomato-id"),
+                    business_name: $(this).attr("data-zomato-name"),
+                    business_loc: $(this).attr("data-zomato-loc"),
+                    customer_rating: $(this).attr("data-zomato-custrate")
+                };
+                $.ajax("/api/restprofile", {
+                    type: "POST",
+                    data: newReview
+                }).then(function() {});
+                window.location.replace("/restaurant");
+            });
+        });
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.js"></script>
     <script src="static/assets/js/autocomplete.js"></script>
     <script src="static/assets/js/reviews.js"></script>
     <link rel="stylesheet" href="static/assets/css/typehead-fix.css" />

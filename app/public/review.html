@@ -7,133 +7,104 @@
     <link rel="stylesheet" href="static/assets/css/header.css" />
     <link rel="stylesheet" href="static/assets/css/minimal-form.css" />
     <link rel="stylesheet" href="static/assets/css/review-form-style.css" />
-<script src="https://code.jquery.com/jquery.js"></script>
-
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
-<div class="nav">
-    <a href="/"> <img class="foh-logo" src="static/assets/img/FOH-logo-blue.png" alt="Front of House"></a>
+    <div class="nav">
+        <a href="/"> <img class="foh-logo" src="static/assets/img/FOH-logo-blue.png" alt="Front of House"></a>
     </div>
- <div class="review-container">   
-     <div id="current-rest">
-         <p class="header2"> WRITE A REVIEW</p>
-    </div>   
-    
-<!--    <div class="form-div">-->
-    <form>
-        <br>User Name:<br>
-  <input type="text" name="reviewTitle" id="user_id" class="form-control">
-<!--
-        <br><br>Business Name:<br>
-  <input type="text" name="businessName" id="business_name" class="form-control">
--->
-        <br><br>Business Review:<br>
-        <textarea rows="4" cols="50" type="text" name="businessReview" id="business_review" class="form-control" style="width:570px"></textarea>
-        <br><br>Star Rating:<br>
-        <select data-placeholder="" class="chosen-select" id="star_rating" style="width:50px">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-       <br><br> Pros:<br>
-  <input type="text" name="pros" id="pros" class="form-control" style="width:570px">
-        <br><br>Cons:<br>
-  <input type="text" name="cons" id="cons" class="form-control" style="width:570px">
-        <br><br>Suggestions to Management:<br>
-  <input type="text" name="suggestions_to_mgmt" id="suggestions_to_mgmt" class="form-control" style="width:570px">
-        <br><br>
-        <input type="submit" value="Submit" class="submit_form">
-        <br>
-    </form>
-<!--</div>-->
-     </div>
-<script type="text/javascript">
-$(document).ready(function() {
-     
-//     var clearTemp = 'setTimeout(function() {$.ajax("/api/temp/" + "1", {type: "DELETE",});}, 2000);';
-     
-     var createApiID = "";
-     var createRestName = "";
-     var createRestLoc = "";
-     var createCustRating = "";
-     var fakeRating = 3.7;
-    
-     $.get("/api/temp", function(data) {
-         createApiID = data[1];
-         createRestName = data[2];
-         createRestLoc = data[3];
-         createCustRating = data[4];
-         console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
-         var currentRestDiv = $("<div class='current-rest'>");
-         var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>' + '<p>' + "Overall Rating: " + fakeRating + '</p>').attr({
-             "data-current-id": createApiID
-         });
-         currentRestDiv.append(dispDetails);
-         $("#current-rest").append(currentRestDiv);
-     });
-   
-///////////////////////////////////////////////////////////////////////////////////////////////////////////    
- $(".submit_form").on("click", function(event) {
-     event.preventDefault();
+    <div class="review-container">
+        <div id="current-rest">
+            <p class="header2"> WRITE A REVIEW</p>
+        </div>
+        <form>
+            <br>User Name:
+            <br>
+            <input type="text" name="reviewTitle" id="user_id" class="form-control">
+            <br>
+            <br>Business Review:
+            <br>
+            <textarea rows="4" cols="50" type="text" name="businessReview" id="business_review" class="form-control" style="width:570px"></textarea>
+            <br>
+            <br>Star Rating:
+            <br>
+            <select data-placeholder="" class="chosen-select" id="star_rating" style="width:50px">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <br> Pros:
+            <br>
+            <input type="text" name="pros" id="pros" class="form-control" style="width:570px">
+            <br>
+            <br>Cons:
+            <br>
+            <input type="text" name="cons" id="cons" class="form-control" style="width:570px">
+            <br>
+            <br>Suggestions to Management:
+            <br>
+            <input type="text" name="suggestions_to_mgmt" id="suggestions_to_mgmt" class="form-control" style="width:570px">
+            <br>
+            <br>
+            <input type="submit" value="Submit" class="submit_form">
+            <br>
+        </form>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var createApiID = "";
+        var createRestName = "";
+        var createRestLoc = "";
+        var createCustRating = "";
+        var fakeRating = 3.7;
 
-//     function validateForm() {
-//         var isValid = true;
-//         $('.form-control').each(function() {
-//             if ($(this).val() === '') isValid = false;
-//         });
-//         $('.chosen-select').each(function() {
-//             if ($(this).val() === "") isValid = false
-//         }) return isValid;
-//     }
-//     
-//     if (validateForm() == true) {
-         var newForm = {
-             api_id: createApiID,
-             user_id: "test123456",
-             user_name: $("#user_id").val().trim(),
-             business_name: createRestName,
-             business_loc: createRestLoc,
-             business_review: $("#business_review").val().trim(),
-             star_rating: $("#star_rating").val(),
-             overall_rating: "3",
-             pros: $("#pros").val().trim(),
-             cons: $("#cons").val().trim(),
-             suggestion_to_mgmt: $("#suggestions_to_mgmt").val().trim()
-         };
-         $.ajax("/api/reviews", {
-             type: "POST",
-             data: newForm
-         }).then(function() {
-             console.log(newForm);
-         });
-         console.log(newForm);
-         window.location.replace("/restaurant");
-//     } 
-//     else {
-//         alert("Please fill out a review before submitting!");
-//     }
-//     return false;
- });
- });
-</script>
+        $.get("/api/temp", function(data) {
+            createApiID = data[1];
+            createRestName = data[2];
+            createRestLoc = data[3];
+            createCustRating = data[4];
+            console.log("TEMP RESULTS " + createApiID + createRestName + createRestLoc + createCustRating);
+            var currentRestDiv = $("<div class='current-rest'>");
+            var dispDetails = $("<div class='rest-details'>").html('<p style="font-weight:600">' + createRestName + '</p>' + '<p>' + createRestLoc + '</p>' + '<p>' + "Customer Rating: " + createCustRating + '</p>' + '<p>' + "Overall Rating: " + fakeRating + '</p>').attr({
+                "data-current-id": createApiID
+            });
+            currentRestDiv.append(dispDetails);
+            $("#current-rest").append(currentRestDiv);
+        });
 
- <!-- jqeury link -->
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    
-    <!--typehead link -->
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.js"></script>
-    
-    <!-- bloodhound link -->
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.js"></script>
-
-    <!-- Code to the JavaScript File -->
+        $(".submit_form").on("click", function(event) {
+            event.preventDefault();
+            var newForm = {
+                api_id: createApiID,
+                user_id: "test123456",
+                user_name: $("#user_id").val().trim(),
+                business_name: createRestName,
+                business_loc: createRestLoc,
+                business_review: $("#business_review").val().trim(),
+                star_rating: $("#star_rating").val(),
+                overall_rating: "3",
+                pros: $("#pros").val().trim(),
+                cons: $("#cons").val().trim(),
+                suggestion_to_mgmt: $("#suggestions_to_mgmt").val().trim()
+            };
+            $.ajax("/api/reviews", {
+                type: "POST",
+                data: newForm
+            }).then(function() {});
+            window.location.replace("/restaurant");
+        });
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.js"></script>
     <script src="static/assets/js/autocomplete.js"></script>
     <script src="static/assets/js/reviews.js"></script>
-
 </body>
 
 </html>

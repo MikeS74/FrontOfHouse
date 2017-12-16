@@ -1,1 +1,0 @@
-$(function(){console.log("REVIEW.JS 1");});
