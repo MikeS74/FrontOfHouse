@@ -4,6 +4,10 @@ CREATE DATABASE frontOfHouse;
 
 USE frontOfHouse;
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
+USE az79wz9xcivnfxl1;
+
 CREATE TABLE reviews (
   id int NOT NULL AUTO_INCREMENT,
   api_id VARCHAR(50) NULL,
