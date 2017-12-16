@@ -46,32 +46,4 @@ router.delete("/api/temp/:id", function(req, res) {
         }
     });
 });
-
-// router.put("/api/reviews/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   review.updateOne({
-//     devoured: req.body.devoured
-//   }, condition, function(result) {
-//     if (result.changedRows == 0) {
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
-
-// router.delete("/api/reviews/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   restProf.delete(condition, function(result) {
-//     if (result.affectedRows == 0) {
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
-
-//Export router setup
 module.exports = router;
