@@ -8,6 +8,10 @@ USE frontOfHouse;
 
 USE az79wz9xcivnfxl1;
 
+DROP TABLE IF EXISTS reviews;
+
+DROP TABLE IF EXISTS restprofile;
+
 CREATE TABLE reviews (
   id int NOT NULL AUTO_INCREMENT,
   api_id VARCHAR(50) NULL,
@@ -25,7 +29,7 @@ CREATE TABLE reviews (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE restProfile (
+CREATE TABLE restprofile (
   id int NOT NULL,
   api_id VARCHAR(50) NULL,
   business_name VARCHAR(100) NULL,
