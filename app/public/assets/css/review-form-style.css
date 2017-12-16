@@ -1,14 +1,11 @@
 option, input, select, textarea, .submit_form {
   font-family: 'Lato', sans-serif !important;
   font-size: 1em !important;
-/*    font-weight: 400;*/
-/*  width: 390px !important;*/
-/*  height: 30px !important;*/
   padding: 0px 5px 0px 5px;
   
   background: #ffffff !important;
   outline: none !important;
-  color: #726659 !important;
+  color: #464646 !important;
   
   border: solid 1px #b3aca7 !important;
   
@@ -24,8 +21,6 @@ body {
 
 form {
     width: 580px !important;
-/*        margin: 0 auto 0 auto;*/
-
 }
 
 .review-container {
@@ -38,6 +33,5 @@ form {
 }
 
 .rest-details {
-/*padding-left: 10px;*/
     width: 400px
 }

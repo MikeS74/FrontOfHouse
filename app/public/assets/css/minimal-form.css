@@ -1,16 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,600');
 
-/*
-html {
-    background: #8d8b8e
-          z-index: -1;
-}
-*/
-
 body {
   font-family: 'Lato', sans-serif;
-/*  background: #ffffff;*/
-  color: #726659;
+  color: #464646;
     margin: 0;
     background: #b9b9b9;
     background-image: url(../img/waiter-bkgd3.png);
@@ -18,33 +10,10 @@ body {
 
 }
 
-/*
-.background {
-      width: 100%;
-  height: 100%;
-  display: block;
-  position: relative;
-}
-*/
-
-/*
-.background {
-    background-image: url(/app/public/assets/img/waiter-bkgd2.png);
-    opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1
-}
-*/
-
 header {border-radius: 10px;
     color: #ffffff;
   position: relative;
   margin: 100px auto 25px auto;
-/*    color: black;*/
   font-size: 1.3em;
   text-align: center;
   letter-spacing: 7px;
@@ -57,7 +26,6 @@ header {border-radius: 10px;
     color: #ffffff;
   position: relative;
   margin: 0 auto 10px auto;
-/*    color: black;*/
   font-size: 1.2em;
   text-align: center;
   letter-spacing: 7px;
@@ -72,9 +40,7 @@ header {border-radius: 10px;
 
 }
 
-
 .input-bar::placeholder {
-/*  color: black !important;*/
   font-size: 1em !important;
 }
 
@@ -94,7 +60,6 @@ header {border-radius: 10px;
   
   background: #ffffff !important;
   outline: none !important;
-/*  color: black !important;*/
   
   border: solid 1px #b3aca7 !important;
   
@@ -133,7 +98,7 @@ position: relative !important;
 
 .input-search:hover {
   background: #ffffff !important;
-  color: #726659 !important;
+  color: #464646 !important;
 }
 
 .blurb {
@@ -152,11 +117,6 @@ margin: 0 auto 0 auto;
     float: right;
     position: relative;
     top: -60px;
-/*
-    width: 180px;
-    height: 100px;
-    position: absolute;
-*/
 }
 
 #txtEmail, #txtPassword, #btnLogin {
