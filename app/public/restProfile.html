@@ -28,8 +28,6 @@
     <script type="text/javascript">
     $(document).ready(function() {
 
-        var clearTemp = 'setTimeout(function() {$.ajax("/api/temp/" + "1", {type: "DELETE",});}, 2000);';
-
         var reviewsObj = {};
         var createApiID = "";
         var createRestName = "";
@@ -37,6 +35,7 @@
         var createCustRating = "";
         var fakeRating = 3.7;
 
+//Retrieves 'current restaurant' data in SQL and displays through jQuery
         $.get("/api/temp", function(data) {
             createApiID = data[1];
             createRestName = data[2];
@@ -54,10 +53,11 @@
             window.location.replace("/form");
         });
 
+//Retrieves data from 'reviews' SQL table and checks if 'current restaurant' id matches any stored reviews
+//If yes, then display all reviews through jQuery
+//If not, then display text "No reviews yet."
         $.get("/api/reviewsbyid", function(data) {
-
             for (var i = 0; i < data.length; i++) {
-
                 var listReviewsDiv = $("<div class='list-reviews-gen'>");
                 reviewsObj = data[i];
                 var userID = reviewsObj.user_id;
@@ -87,8 +87,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.js"></script>
-    <script src="static/assets/js/autocomplete.js"></script>
-    <script src="static/assets/js/reviews.js"></script>
 </body>
 
 </html>

@@ -63,6 +63,7 @@
         var createCustRating = "";
         var fakeRating = 3.7;
 
+//Retrieves 'current restaurant' data in SQL and displays through jQuery
         $.get("/api/temp", function(data) {
             createApiID = data[1];
             createRestName = data[2];
@@ -77,6 +78,7 @@
             $("#current-rest").append(currentRestDiv);
         });
 
+//Posts form data to 'reviews' SQL table then forwards back to 'current restaurant' profile page
         $(".submit_form").on("click", function(event) {
             event.preventDefault();
             var newForm = {
@@ -103,8 +105,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.js"></script>
-    <script src="static/assets/js/autocomplete.js"></script>
-    <script src="static/assets/js/reviews.js"></script>
 </body>
 
 </html>
