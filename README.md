@@ -4,6 +4,8 @@ Restaurant workers, listen up!  Ever wondered what you are getting into when you
 
 http://bit.ly/front-of-house
 
+(Search Panera Bread, Taco Bell and Islands for example reviews)
+
 ## How To Use The App
 
 - Upon page load, the user will fill in the prompted information
