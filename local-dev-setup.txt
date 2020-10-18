@@ -1,3 +1,9 @@
+IF YOU PLAN TO ACTIVELY DEVELOP:
 create ssh key for github
-install heroku cli and login
 install mysql-installer-community-x.xx.xx (not workbench)
+install heroku cli and login
+clone heroku repo: https://git.heroku.com/boiling-garden-25888.git
+
+TO TEST LOCALLY:
+run the command `node server.js` to run the program
+open http://localhost:8000/ in your browser
