@@ -1,0 +1,3 @@
+create ssh key for github
+install heroku cli and login
+install mysql-installer-community-x.xx.xx (not workbench)
